@@ -15,11 +15,17 @@ class Controller extends BaseController
         $count_microposts = $user->microposts()->count();
         $count_followings = $user->followings()->count();
         $count_followers = $user->followers()->count();
+        
+        //kadai2
+        $count_favorites = $user->favorites()->count();
 
         return [
             'count_microposts' => $count_microposts,
             'count_followings' => $count_followings,
             'count_followers' => $count_followers,
+            
+            //kadai2
+            'count_favorites' => $count_favorites,
         ];
     }
 }

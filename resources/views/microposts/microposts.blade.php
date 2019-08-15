@@ -14,6 +14,11 @@
                         {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
+            <!-- kadai2 -->
+                    @else
+<!-- kadai2-->                 
+                        @include('micropost_favorite.favorite_button')
+<!-- kadai2 -->
                     @endif
                 </div>
             </div>
