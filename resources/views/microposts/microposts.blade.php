@@ -9,12 +9,20 @@
                 <div>
                     <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                 </div>
-                <div>
+                <div class="">
                     @if (Auth::id() == $micropost->user_id)
                         {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
-            <!-- kadai2 -->
+            <!-- kadai2 -->@if (Auth::user()->is_favoriting($micropost->id))
+                                {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+                                    {!! Form::submit('Unfavorite', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @else
+                                {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+                                    {!! Form::submit('Favorite', ['class' => 'btn btn-primary btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @endif
                     @else
 <!-- kadai2-->                 
                         @include('micropost_favorite.favorite_button')
